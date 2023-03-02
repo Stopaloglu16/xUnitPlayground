@@ -2,7 +2,7 @@ using xUnitExamples.Data.FromClass;
 
 namespace xUnitExamples
 {
-    public class UnitTest1
+    public class UnitTestTheories
     {
         [Fact]
         public void SimpleTest_DataAssign_TruePass()
