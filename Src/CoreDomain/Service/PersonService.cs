@@ -1,12 +1,7 @@
 ﻿using AutoMapper;
 using CoreDomain.Aggregate;
 using CoreDomain.Entity;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CoreDomain.Service
 {
@@ -26,14 +21,22 @@ namespace CoreDomain.Service
         }
 
 
-        public PersonDto GetPersonDtoException1()
+        public PersonDto GetPersonDtoException1(int Id, string name1, string name2)
         {
-            Person person = new Person(1, null!, "Test");
+            Person person = new Person(Id, name1, name2);
 
             ICollection<ValidationResult> results = null;
 
 
-            Validate(person, out results);
+            if (!Validate(person, out results))
+            {
+                foreach (ValidationResult result in results)
+                {
+                    Console.WriteLine("Error " + result.ErrorMessage);
+                }
+
+                throw new ArgumentException();
+            }
 
             var config = new MapperConfiguration(cfg => cfg.CreateMap<Person, PersonDto>());
 
@@ -48,7 +51,7 @@ namespace CoreDomain.Service
             try
             {
                 Person person = new Person(1, null!, "Test");
-                
+
 
                 var config = new MapperConfiguration(cfg => cfg.CreateMap<Person, PersonDto>());
 
@@ -62,7 +65,13 @@ namespace CoreDomain.Service
 
         }
 
-
+        /// <summary>
+        /// Validation of the class models
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <param name="results"></param>
+        /// <returns></returns>
         static bool Validate<T>(T obj, out ICollection<ValidationResult> results)
         {
             results = new List<ValidationResult>();
