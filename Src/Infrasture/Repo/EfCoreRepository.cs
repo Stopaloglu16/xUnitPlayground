@@ -88,6 +88,10 @@ namespace Infrasture.Repo
             return entity;
         }
 
+        public TEntity GetById(int id)
+        {
+            return context.Set<TEntity>().Find(id);
+        }
     }
 
 

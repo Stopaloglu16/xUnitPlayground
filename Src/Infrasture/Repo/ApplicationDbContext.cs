@@ -10,8 +10,7 @@ namespace Infrasture.Repo
         //{
         //}
 
-        protected override void OnConfiguring
-        (DbContextOptionsBuilder optionsBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseInMemoryDatabase(databaseName: "AuthorDb");
         }

@@ -22,11 +22,19 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        public  IEnumerable<Person> Get(bool IsActive)
+        public IEnumerable<Person> Get(bool IsActive)
         {
 
 
             return _repo.GetAll();
+        }
+
+
+        [HttpGet("{Id}")]
+        public async Task<Person> GetById(int Id)
+        {
+
+            return await _repo.GetByIdAsync(Id);
         }
 
 
