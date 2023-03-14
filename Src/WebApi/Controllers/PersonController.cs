@@ -3,6 +3,8 @@ using CoreDomain.Entity;
 using Infrasture.Repo;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
+using System;
 
 namespace WebApi.Controllers
 {
@@ -31,10 +33,12 @@ namespace WebApi.Controllers
 
 
         [HttpGet("{Id}")]
-        public async Task<Person> GetById(int Id)
+        public async Task<ActionResult<Person>> GetById(int Id)
         {
 
-            return await _repo.GetByIdAsync(Id);
+            var person = await _repo.GetByIdAsync(Id);
+
+            return Ok(person);
         }
 
 
@@ -46,4 +50,9 @@ namespace WebApi.Controllers
         }
 
     }
+
+
+
+
+ 
 }

@@ -21,9 +21,12 @@ namespace Infrasture.Repo
             _mapper = mapper;
         }
 
-        public Task<PersonDto> CreatePerson(PersonDto createRequest)
+        public async Task<PersonDto> CreatePerson(PersonDto createRequest)
         {
-            throw new NotImplementedException();
+         var newPerson = await _dbContext.AddAsync(new Person() { Id = createRequest.Id, FirstName = createRequest.FirstName, LastName = createRequest.LastName });
+
+            return createRequest;
+
         }
 
         public Task<IEnumerable<PersonDto>> GetList()

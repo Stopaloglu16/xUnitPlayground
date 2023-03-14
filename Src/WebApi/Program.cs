@@ -6,14 +6,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 //builder.Services.AddDbContext<ApplicationDbContext>(options =>
-//                   options.UseInMemoryDatabase("TestDb"));
+  //                 options.UseInMemoryDatabase("TestDb"));
 
 
 // Add services to the container.
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(EfCoreRepository<>));
 
-builder.Services.AddScoped<IPersonRepository, PersonRepository>();
+//builder.Services.AddScoped<IPersonRepository, PersonRepository>();
 
 
 builder.Services.AddControllers();
@@ -37,3 +37,8 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+
+//https://learn.microsoft.com/en-us/aspnet/core/test/integration-tests?view=aspnetcore-7.0
+public partial class Program { }
+
