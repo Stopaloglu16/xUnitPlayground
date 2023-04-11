@@ -1,4 +1,5 @@
-﻿using CoreDomain.Entity;
+﻿using AutoMapper;
+using CoreDomain.Entity;
 using System.ComponentModel.DataAnnotations;
 
 namespace CoreDomain.Aggregate
@@ -10,5 +11,8 @@ namespace CoreDomain.Aggregate
         [Required]
         public string? FirstName { get; set; }
         public string LastName { get; set; }
+
+
+       
     }
 }

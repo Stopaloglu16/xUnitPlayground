@@ -1,10 +1,8 @@
-﻿using CoreDomain.Aggregate;
+﻿using AutoMapper;
+using CoreDomain.Aggregate;
 using CoreDomain.Entity;
-using Infrasture.Repo;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Net;
-using System;
+using WebApi.Services;
 
 namespace WebApi.Controllers
 {
@@ -13,22 +11,23 @@ namespace WebApi.Controllers
     public class PersonController : ControllerBase
     {
 
-        private readonly IPersonRepository _repo;
+        private readonly IPersonService _service;
+
         private readonly ILogger _logger;
 
-        public PersonController(IPersonRepository repo, ILogger logger = null)
+      
+
+        public PersonController(IPersonService personService, ILogger logger = null)
         {
-            _repo = repo;
+            _service = personService;
             _logger = logger;
-            //_repo.FailedDatabaseRequest += Repo_FailedDatabaseRequest;
+            
         }
 
         [HttpGet]
-        public IEnumerable<Person> Get(bool IsActive)
+        public async Task<IEnumerable<PersonDto>> Get(bool IsActive)
         {
-
-
-            return _repo.GetAll();
+            return await _service.GetList();
         }
 
 
@@ -36,23 +35,27 @@ namespace WebApi.Controllers
         public async Task<ActionResult<Person>> GetById(int Id)
         {
 
-            var person = await _repo.GetByIdAsync(Id);
+           var person = await _service.GetByIdAsync(Id);
 
-            return Ok(person);
+           return Ok(person);
         }
 
 
         [HttpPost]
-        public async Task<PersonDto> Create(PersonDto person)
+        public async Task<int> Create(PersonDto createRequest)
         {
 
-            return await _repo.CreatePerson(person);
+            return await _service.Add(createRequest);
+
         }
+
+
+
 
     }
 
 
 
 
- 
+
 }

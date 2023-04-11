@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc.Testing;
 using System.Net;
 
-namespace xUnitApiTests
+namespace xUnitApiTests.IntegrationTests
 {
 
-    public class PersonControllerTests : IClassFixture<WebApplicationFactory<Program>>
+    public class WeatherforecastControllerTests : IClassFixture<WebApplicationFactory<Program>>
     {
         readonly HttpClient _client;
 
-        public PersonControllerTests(WebApplicationFactory<Program> application)
+        public WeatherforecastControllerTests(WebApplicationFactory<Program> application)
         {
             _client = application.CreateClient();
         }

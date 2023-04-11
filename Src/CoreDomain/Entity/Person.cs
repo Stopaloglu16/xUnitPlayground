@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CoreDomain.Entity
 {
@@ -7,7 +8,7 @@ namespace CoreDomain.Entity
         public Person()
         {
 
-            AddressList = new HashSet<Address>();
+            AddressList = new List<Address>();
         }
 
         public Person(int Id, string FirstName, string LastName)
@@ -15,7 +16,8 @@ namespace CoreDomain.Entity
             this.Id = Id;
             this.FirstName = FirstName;
             this.LastName = LastName;
-            AddressList = new HashSet<Address>();
+            //AddressList = new HashSet<Address>();
+            AddressList = new List<Address>();
         }
 
 
@@ -26,7 +28,8 @@ namespace CoreDomain.Entity
 
         public string LastName { get; set; } = string.Empty;
 
-        public ICollection<Address> AddressList { get; set; }
+        [InverseProperty("PersonAddress")]
+        public virtual ICollection<Address> AddressList { get; set; } = new List<Address>();
 
 
     }

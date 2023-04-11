@@ -1,11 +1,8 @@
 ﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using CoreDomain.Aggregate;
 using CoreDomain.Entity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrasture.Repo
 {
@@ -21,17 +18,38 @@ namespace Infrasture.Repo
             _mapper = mapper;
         }
 
-        public async Task<PersonDto> CreatePerson(PersonDto createRequest)
+        public async Task<Person> CreatePerson(Person createRequest)
         {
-         var newPerson = await _dbContext.AddAsync(new Person() { Id = createRequest.Id, FirstName = createRequest.FirstName, LastName = createRequest.LastName });
 
+            await _dbContext.AddAsync(createRequest);
             return createRequest;
 
         }
 
-        public Task<IEnumerable<PersonDto>> GetList()
+        public async Task<IEnumerable<PersonDto>> GetList()
         {
-            throw new NotImplementedException();
+
+            List<PersonDto> myRtn = new List<PersonDto>();
+            try
+            {
+                var myList = await GetAll().ToListAsync();
+
+                foreach (var item in myList)
+                {
+
+                    myRtn.Add(new PersonDto { Id = item.Id, FirstName = item.FirstName, LastName = item.LastName });
+
+                }
+
+                return myRtn;
+            }
+            catch (Exception ex)
+            {
+                return new List<PersonDto>();
+            }
+
         }
+
+        
     }
 }
