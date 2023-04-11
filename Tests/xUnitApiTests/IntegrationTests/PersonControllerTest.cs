@@ -37,19 +37,12 @@ namespace xUnitApiTests.IntegrationTests
         [Fact]
         public async Task Save_ValidPerson_Pass()
         {
-            //PersonDto person = new PersonDto();
 
-            //person.Id = 1;
-            //person.FirstName = "123";
-            //person.LastName = "345";
-
-
-            //var jsonContent = new StringContent(JsonConvert.SerializeObject(person), Encoding.UTF8, "application/json");
-
-
-            //var myResponse = await _client.PostAsync($"/api/Person", jsonContent);
-
-
+            var myTempPerson = new PersonDto
+            {
+                FirstName = "Bruce",
+                LastName = "Wayne"
+            };
 
             using (var scope = _factory.Services.CreateScope())
             {
@@ -61,20 +54,26 @@ namespace xUnitApiTests.IntegrationTests
                 }
             }
 
-            var response = await _httpClient.PostAsJsonAsync("/api/Person", new PersonDto
-            {
+            var response = await _httpClient.PostAsJsonAsync("/api/Person", myTempPerson);
+
             
-                FirstName = "123    ",
-                LastName = "345"
-        });
+
+            Assert.Equal(System.Net.HttpStatusCode.OK, response.StatusCode);
+
+            var personId = await response.Content.ReadAsStringAsync();
+
+            var myList =  await _httpClient.GetFromJsonAsync<List<Person>>("api/Person?IsActive=true");
+
+            Assert.NotNull(myList);
+            Assert.Single(myList);
 
 
+            var myPerson = await _httpClient.GetFromJsonAsync<PersonDto>(String.Format("api/Person/{0}", personId));
 
-            Assert.Equal("", "");
+
+            Assert.NotNull(myPerson);
+            Assert.Equal(myTempPerson.FirstName, myPerson.FirstName);
+
         }
-
-
-
     }
-
 }
