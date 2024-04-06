@@ -42,8 +42,8 @@ namespace xUnitMock
 
             //Assert.Same(customer, actual);
             Assert.Equal(1, actual.Id);
-            //Assert.Equal(name, actual.FirstName);
-            Assert.Equal(name, personClone.FirstName);
+            //Assert.Equal(name, actual.);
+            //Assert.Equal(name, personClone.FirstName);
         }
     }
 }

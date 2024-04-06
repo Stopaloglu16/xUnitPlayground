@@ -1,16 +1,10 @@
 ﻿using Infrasture.Repo;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
 using System.Data.Common;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace xUnitApiTests
 {
@@ -38,7 +32,7 @@ namespace xUnitApiTests
         //            options.UseSqlite($"Data Source={Path.Join(path, "WebMinRouteGroup_tests.db")}");
         //        });
 
-               
+
         //    });
 
         //    return base.CreateHost(builder);
@@ -54,7 +48,7 @@ namespace xUnitApiTests
                     d => d.ServiceType ==
                         typeof(DbContextOptions<ApplicationDbContext>));
 
-                if (dbContextDescriptor != null)  services.Remove(dbContextDescriptor);
+                if (dbContextDescriptor != null) services.Remove(dbContextDescriptor);
 
                 // Create open SqliteConnection so EF won't automatically close it.
                 services.AddSingleton<DbConnection>(container =>
