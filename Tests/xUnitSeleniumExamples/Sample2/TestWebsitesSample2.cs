@@ -1,12 +1,6 @@
-﻿using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using xUnitSeleniumExamples.Sample2.Pages;
-using NuGet.Frameworks;
 
 namespace xUnitSeleniumExamples.Sample2
 {
@@ -30,7 +24,7 @@ namespace xUnitSeleniumExamples.Sample2
             //Assert
             Assert.True(loginPage.IsLoggedIn());
 
-            
+
             webDriver.Close();
 
         }

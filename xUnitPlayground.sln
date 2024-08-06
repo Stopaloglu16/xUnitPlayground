@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "xUnitMock", "Tests\xUnitMoc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "xUnitApiTests", "Tests\xUnitApiTests\xUnitApiTests.csproj", "{55CC55F9-07F7-403C-AE78-1FBB8947127D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xUnitSeleniumExamples", "Tests\xUnitSeleniumExamples\xUnitSeleniumExamples.csproj", "{EEA99C78-E839-4BD2-B0A8-F093A2C2274E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "xUnitSeleniumExamples", "Tests\xUnitSeleniumExamples\xUnitSeleniumExamples.csproj", "{EEA99C78-E839-4BD2-B0A8-F093A2C2274E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xUnitBogus", "Tests\xUnitBogus\xUnitBogus.csproj", "{9FE20478-3681-4F49-A199-E3338DDA6579}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +57,10 @@ Global
 		{EEA99C78-E839-4BD2-B0A8-F093A2C2274E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EEA99C78-E839-4BD2-B0A8-F093A2C2274E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EEA99C78-E839-4BD2-B0A8-F093A2C2274E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FE20478-3681-4F49-A199-E3338DDA6579}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FE20478-3681-4F49-A199-E3338DDA6579}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FE20478-3681-4F49-A199-E3338DDA6579}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FE20478-3681-4F49-A199-E3338DDA6579}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,6 +73,7 @@ Global
 		{181B3EEC-86EB-4C0D-9633-9508C3181079} = {DAF89896-2726-4C7C-B860-539F61897B93}
 		{55CC55F9-07F7-403C-AE78-1FBB8947127D} = {DAF89896-2726-4C7C-B860-539F61897B93}
 		{EEA99C78-E839-4BD2-B0A8-F093A2C2274E} = {DAF89896-2726-4C7C-B860-539F61897B93}
+		{9FE20478-3681-4F49-A199-E3338DDA6579} = {DAF89896-2726-4C7C-B860-539F61897B93}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6EC4E7-B3F9-4645-B30B-D9FB6E3D3ECE}
