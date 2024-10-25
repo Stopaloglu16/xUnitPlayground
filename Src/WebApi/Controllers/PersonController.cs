@@ -44,9 +44,15 @@ namespace WebApi.Controllers
         [HttpPost]
         public async Task<ActionResult<int>> Create(PersonDto createRequest)
         {
-
-            return await _service.Add(createRequest);
-
+            try
+            {
+                var rrId = await _service.Add(createRequest);
+                return Ok(rrId);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
 

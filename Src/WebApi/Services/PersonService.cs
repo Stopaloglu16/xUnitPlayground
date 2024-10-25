@@ -14,7 +14,7 @@ namespace WebApi.Services
 
         public async Task<int> Add(PersonDto createRequest)
         {
-            var newPerson = await personRepository.AddAsync(new Person() { Id = createRequest.Id, FirstName = createRequest.FirstName, LastName = createRequest.LastName });
+            var newPerson = await personRepository.AddAsync(new Person() { FirstName = createRequest.FirstName, LastName = createRequest.LastName });
 
             return newPerson.Id;    
         }

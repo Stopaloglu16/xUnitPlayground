@@ -20,9 +20,21 @@ namespace Infrasture.Repo
 
         public async Task<Person> CreatePerson(Person createRequest)
         {
+            try
+            {
+                
 
-            await _dbContext.AddAsync(createRequest);
-            return createRequest;
+                var rr =  await _dbContext.Persons.AddAsync(createRequest);
+                await _dbContext.SaveChangesAsync();
+
+                return createRequest;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            
 
         }
 

@@ -1,7 +1,5 @@
 ﻿using CoreDomain.Entity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
-using System;
 using System.Reflection;
 
 namespace Infrasture.Repo
@@ -24,7 +22,7 @@ namespace Infrasture.Repo
 
 
         public DbSet<Address> Addresses { get; set; }
-        public DbSet<Person> Persons => Set<Person>();
+        public DbSet<Person> Persons { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -32,7 +30,7 @@ namespace Infrasture.Repo
 
             modelBuilder.Entity<Address>()
                 .HasOne(p => p.PersonAddress)
-                . WithMany(pp => pp.AddressList);
+                .WithMany(pp => pp.AddressList);
 
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
