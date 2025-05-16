@@ -34,6 +34,49 @@ namespace xUnitSeleniumExamples.Sample1
             webDriver.Close();
         }
 
+
+        [Fact]
+        public void Test_Google2()
+        {
+            //WebDriverManager nuget
+            //new WebDriverManager.DriverManager().SetUpDriver(new ChromeConfig());
+
+            //Create a new instance of Selenium WebDriver
+            IWebDriver webDriver = new ChromeDriver();
+
+            //Implicit wait 10 secs for global selenium methods
+            webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+
+
+            //Navigate to URL
+            webDriver.Navigate().GoToUrl("https://www.google.co.uk/");
+
+            //Maximize the browser
+            webDriver.Manage().Window.Maximize();
+
+            IWebElement webElement1 = webDriver.FindElement(By.Id("W0wltc"));
+            webElement1.Click();
+
+
+            //Explicit wait 10 secs for specific selenium methods
+            WebDriverWait webDriverWait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(10));
+            webDriverWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.Name("q")));
+
+
+            //Find the element
+            IWebElement webElement = webDriver.FindElement(By.Name("q"));
+
+            //Type in the element
+            webElement.SendKeys("What is Selenium");
+
+            //Click on the element
+            webElement.SendKeys(Keys.Return);
+
+            Thread.Sleep(2000);
+            webDriver.Close();
+        }
+
+
         [Fact]
         public void Test_Eaapp()
         {

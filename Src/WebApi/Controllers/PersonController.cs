@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using CoreDomain.Aggregate;
+﻿using CoreDomain.Aggregate;
 using CoreDomain.Entity;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Services;
