@@ -9,6 +9,13 @@ namespace xUnitPlaywrightExamples
         [Fact]
         public async Task TestWithCustomContextOptions()
         {
+
+        //https://www.youtube.com/watch?v=saiERvtQDIk
+
+        //https://playwright.dev/dotnet/docs/trace-viewer-intro#recording-a-trace
+
+        //https://learn.microsoft.com/en-us/azure/playwright-testing/quickstart-run-end-to-end-tests?tabs=playwrightcli&pivots=nunit-test-runner
+
             // The following Page (and BrowserContext) instance has the custom colorScheme, viewport and baseURL set:
             await Page.GotoAsync("/login");
         }
